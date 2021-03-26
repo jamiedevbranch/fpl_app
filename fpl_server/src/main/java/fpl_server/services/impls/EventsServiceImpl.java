@@ -10,11 +10,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import fpl_server.daos.interfaces.FplApiDao;
-import fpl_server.fpl_server.api.responses.EventsResponse;
 import fpl_server.model.eventapi.Event;
 import fpl_server.model.eventapi.EventType;
 import fpl_server.model.eventapi.PlayerDisplay;
@@ -108,7 +106,6 @@ public class EventsServiceImpl implements EventsService {
 			Event event = new Event();
 			event.setEventType(EventType.GOAL);
 			event.setPlayer(playerDisplay);
-			event.setMinute(newState.getStats().getMinutes());
 			newEvents.add(event);
 		}
 
@@ -116,7 +113,6 @@ public class EventsServiceImpl implements EventsService {
 			Event event = new Event();
 			event.setEventType(EventType.ASSIST);
 			event.setPlayer(playerDisplay);
-			event.setMinute(newState.getStats().getMinutes());
 			newEvents.add(event);
 		}
 
@@ -124,7 +120,6 @@ public class EventsServiceImpl implements EventsService {
 			Event event = new Event();
 			event.setEventType(EventType.YELLOW);
 			event.setPlayer(playerDisplay);
-			event.setMinute(newState.getStats().getMinutes());
 			newEvents.add(event);
 		}
 
@@ -132,8 +127,6 @@ public class EventsServiceImpl implements EventsService {
 			Event event = new Event();
 			event.setEventType(EventType.RED);
 			event.setPlayer(playerDisplay);
-			event.setMinute(newState.getStats().getMinutes());
-
 			newEvents.add(event);
 		}
 
@@ -141,8 +134,6 @@ public class EventsServiceImpl implements EventsService {
 			Event event = new Event();
 			event.setEventType(EventType.PENALTY_MISS);
 			event.setPlayer(playerDisplay);
-			event.setMinute(newState.getStats().getMinutes());
-
 			newEvents.add(event);
 		}
 
@@ -150,8 +141,6 @@ public class EventsServiceImpl implements EventsService {
 			Event event = new Event();
 			event.setEventType(EventType.PENALTY_SAVE);
 			event.setPlayer(playerDisplay);
-			event.setMinute(newState.getStats().getMinutes());
-
 			newEvents.add(event);
 		}
 
@@ -161,15 +150,11 @@ public class EventsServiceImpl implements EventsService {
 			Event event = new Event();
 			event.setEventType(EventType.CLEAN_SHEET_GAINED);
 			event.setPlayer(playerDisplay);
-			event.setMinute(newState.getStats().getMinutes());
-
 			newEvents.add(event);
 		} else if (oldState.getStats().getClean_sheets() > newState.getStats().getClean_sheets()) {
 			Event event = new Event();
 			event.setEventType(EventType.CLEAN_SHEET_LOST);
 			event.setPlayer(playerDisplay);
-			event.setMinute(newState.getStats().getMinutes());
-
 			newEvents.add(event);
 		}
 
