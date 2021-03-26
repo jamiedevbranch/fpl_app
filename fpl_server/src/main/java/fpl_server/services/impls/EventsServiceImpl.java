@@ -18,6 +18,7 @@ import fpl_server.model.eventapi.EventType;
 import fpl_server.model.eventapi.PlayerDisplay;
 import fpl_server.objects.Player;
 import fpl_server.objects.PlayerData;
+import fpl_server.objects.Stats;
 import fpl_server.objects.Subscription;
 import fpl_server.services.interfaces.EventsService;
 import fpl_server.services.interfaces.SubscriptionService;
@@ -102,59 +103,79 @@ public class EventsServiceImpl implements EventsService {
 		
 		PlayerDisplay playerDisplay = new PlayerDisplay(fplApiDao.getPlayerName(playerId), "", playerId);
 
-		if (oldState.getStats().getGoals_scored() < newState.getStats().getGoals_scored()) {
+		Stats oldStats = oldState.getStats();
+		Stats newStats = newState.getStats();
+		
+		if (oldStats.getGoals_scored() != newStats.getGoals_scored()) {
 			Event event = new Event();
 			event.setEventType(EventType.GOAL);
 			event.setPlayer(playerDisplay);
+			event.setCount(newStats.getGoals_scored() - oldStats.getGoals_scored());
+			
 			newEvents.add(event);
 		}
 
-		if (oldState.getStats().getAssists() < newState.getStats().getAssists()) {
+		if (oldStats.getAssists() != newStats.getAssists()) {
 			Event event = new Event();
 			event.setEventType(EventType.ASSIST);
 			event.setPlayer(playerDisplay);
+			event.setCount(newStats.getAssists() - oldStats.getAssists());
+			
 			newEvents.add(event);
 		}
 
-		if (oldState.getStats().getYellow_cards() < newState.getStats().getYellow_cards()) {
+		if (oldStats.getYellow_cards() != newStats.getYellow_cards()) {
 			Event event = new Event();
 			event.setEventType(EventType.YELLOW);
 			event.setPlayer(playerDisplay);
+			event.setCount(newStats.getYellow_cards() - oldStats.getYellow_cards());
+
 			newEvents.add(event);
 		}
 
-		if (oldState.getStats().getRed_cards() < newState.getStats().getRed_cards()) {
+		if (oldStats.getRed_cards() != newStats.getRed_cards()) {
 			Event event = new Event();
 			event.setEventType(EventType.RED);
 			event.setPlayer(playerDisplay);
+			event.setCount(newStats.getRed_cards() - oldStats.getRed_cards());
+
 			newEvents.add(event);
 		}
 
-		if (oldState.getStats().getPenalties_missed() < newState.getStats().getPenalties_missed()) {
+		if (oldStats.getPenalties_missed() != newStats.getPenalties_missed()) {
 			Event event = new Event();
 			event.setEventType(EventType.PENALTY_MISS);
 			event.setPlayer(playerDisplay);
+			event.setCount(newStats.getPenalties_missed() - oldStats.getPenalties_missed());
+
 			newEvents.add(event);
 		}
 
-		if (oldState.getStats().getPenalties_saved() < newState.getStats().getPenalties_saved()) {
+		if (oldStats.getPenalties_saved() != newStats.getPenalties_saved()) {
 			Event event = new Event();
 			event.setEventType(EventType.PENALTY_SAVE);
 			event.setPlayer(playerDisplay);
+			event.setCount(newStats.getPenalties_saved() - oldStats.getPenalties_saved());
+
 			newEvents.add(event);
 		}
 
 		//TODO - filter these out for strikers
-		if (oldState.getStats().getClean_sheets() < newState.getStats().getClean_sheets()) {
+		if (oldStats.getClean_sheets() < newStats.getClean_sheets()) {
 			
 			Event event = new Event();
 			event.setEventType(EventType.CLEAN_SHEET_GAINED);
 			event.setPlayer(playerDisplay);
+			event.setCount(newStats.getClean_sheets() - oldStats.getClean_sheets());
+
 			newEvents.add(event);
-		} else if (oldState.getStats().getClean_sheets() > newState.getStats().getClean_sheets()) {
+		} 
+		else if (oldStats.getClean_sheets() > newStats.getClean_sheets()) {
 			Event event = new Event();
 			event.setEventType(EventType.CLEAN_SHEET_LOST);
 			event.setPlayer(playerDisplay);
+			event.setCount(newStats.getClean_sheets() - oldStats.getClean_sheets());
+
 			newEvents.add(event);
 		}
 

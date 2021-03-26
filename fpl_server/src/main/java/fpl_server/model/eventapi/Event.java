@@ -6,6 +6,7 @@ public class Event implements Serializable{
 
 	private PlayerDisplay player;
 	private EventType eventType;
+	private int count;
 	
 	public PlayerDisplay getPlayer() {
 		return player;
@@ -19,9 +20,18 @@ public class Event implements Serializable{
 	public void setEventType(EventType eventType) {
 		this.eventType = eventType;
 	}
+	
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
 	@Override
 	public String toString() {
-		return "Event [player=" + player + ", eventType=" + eventType + "]";
+		return "Event [player=" + player + ", eventType=" + eventType + ", count=" + count + "]";
 	}
 	
 	

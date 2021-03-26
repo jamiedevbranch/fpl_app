@@ -18,17 +18,14 @@ public class FPLSocketController {
 	@Autowired
 	EventsService monitorService;
 	
-	@MessageMapping("/chat")
-	@SendTo("/topic/messages")
-	public String backAtcha(SubscriptionRequest subscriptionRequest) {
+	@MessageMapping("/create")
+	public void saveSubscription(SubscriptionRequest subscriptionRequest) {
 				
 		System.out.println("subbin': " + subscriptionRequest.getTeamId());
 
 		subscriptionService.saveCurrentGameweekSubscriptionForTeam(subscriptionRequest.getTeamId());
 		
-		//monitorService.processSubscriptions();
-		
-		return subscriptionRequest + ": that's cool i guess";
+		return;
 	}
 	
 

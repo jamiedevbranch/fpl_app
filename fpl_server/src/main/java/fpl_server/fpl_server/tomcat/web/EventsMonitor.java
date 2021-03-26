@@ -40,7 +40,7 @@ public class EventsMonitor {
 			List<Event> eventsForSub = eventsForSubscriptions.get(subscription);
 
 			EventsResponse response = new EventsResponse(eventsForSub);
-			template.convertAndSend("/subscription/" + subscription.getTeamId(), response);
+			template.convertAndSend("/topic/subscription/" + subscription.getTeamId()  , response);
 		}
 
 	}
