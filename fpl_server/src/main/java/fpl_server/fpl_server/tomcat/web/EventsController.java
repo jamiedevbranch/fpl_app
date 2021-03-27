@@ -34,6 +34,7 @@ public class EventsController {
 	@RequestMapping("/rest/team/{teamId}/events")
 	@ResponseBody
 	public EventsResponse getEventsForCurrentGameweek(@PathVariable Integer teamId) {
-		return new EventsResponse(monitorService.getAllEventsForTeamForCurrentGameweek(teamId));
+		EventsResponse response = new EventsResponse(monitorService.getAllEventsForTeamForCurrentGameweek(teamId));
+		return response;
 	}
 }
