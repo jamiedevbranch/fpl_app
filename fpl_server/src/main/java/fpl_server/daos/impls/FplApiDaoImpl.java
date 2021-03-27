@@ -184,7 +184,7 @@ public class FplApiDaoImpl implements FplApiDao {
 
 	@Override
 	public Subscription getSubscriptionForTeamId(Integer teamId) {
-
+ 
 		System.out.println("Loading subscription " + teamId);
 		String webPage = "https://fantasy.premierleague.com/api/entry/" + teamId + "/event/" + getCurrentGameweek() + "/picks/";
 		
