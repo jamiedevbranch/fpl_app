@@ -1,9 +1,7 @@
-package fpl_server.fpl_server.api.responses;
+package fpl_server.model.eventapi;
 
 import java.io.Serializable;
 import java.util.List;
-
-import fpl_server.model.eventapi.Event;
 
 public class EventsResponse implements Serializable{
 

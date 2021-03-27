@@ -33,7 +33,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasSize;
 
-import fpl_server.fpl_server.tomcat.FPLTomcatApplication;
+import fpl_server.fpl_server.config.TomcatConfiguration;
 import fpl_server.model.eventapi.Event;
 import fpl_server.services.interfaces.EventsService;
 
@@ -45,7 +45,7 @@ import java.nio.charset.Charset;
 import java.util.Arrays;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = FPLTomcatApplication.class)
+@SpringApplicationConfiguration(classes = TomcatConfiguration.class)
 @WebAppConfiguration
 public class EventsControllerTest {
 

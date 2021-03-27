@@ -1,4 +1,4 @@
-package fpl_server.fpl_server.tomcat.config;
+package fpl_server.fpl_server.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

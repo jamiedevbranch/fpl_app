@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package fpl_server.fpl_server.tomcat;
+package fpl_server.fpl_server.config;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -30,12 +30,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan("fpl_server.*")
-public class FPLTomcatApplication {
+public class TomcatConfiguration {
 
-	private static Log logger = LogFactory.getLog(FPLTomcatApplication.class);
+	private static Log logger = LogFactory.getLog(TomcatConfiguration.class);
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(FPLTomcatApplication.class, args);
+		SpringApplication.run(TomcatConfiguration.class, args);
 	}
 
 	@Bean

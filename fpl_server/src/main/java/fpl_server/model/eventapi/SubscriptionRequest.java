@@ -1,4 +1,4 @@
-package fpl_server.fpl_server.api.requests;
+package fpl_server.model.eventapi;
 
 public class SubscriptionRequest {
 

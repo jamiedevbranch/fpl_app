@@ -8,21 +8,21 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 
-import fpl_server.fpl_server.api.responses.EventsResponse;
 import fpl_server.model.eventapi.Event;
+import fpl_server.model.eventapi.EventsResponse;
 import fpl_server.objects.Subscription;
 import fpl_server.services.interfaces.EventsService;
 
 @Controller
 @EnableScheduling
-public class EventsMonitor {
+public class EventsPublisher {
 
 	private final EventsService eventsService;
 	
 	private final SimpMessagingTemplate template;
 		
 	@Autowired
-	public EventsMonitor(
+	public EventsPublisher(
 			final EventsService eventsService,
 			final SimpMessagingTemplate template) {
 		this.eventsService = eventsService;
@@ -31,7 +31,7 @@ public class EventsMonitor {
 	}
 	
 	@Scheduled(fixedDelay = 60 * 1000)
-	public void processSubscriptions() {
+	public void publishEventsForSubscriptions() {
 		
 		Map<Subscription, List<Event>> eventsForSubscriptions = eventsService.getEventsForSubscriptions();
 

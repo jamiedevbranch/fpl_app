@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import fpl_server.fpl_server.api.responses.EventsResponse;
+import fpl_server.model.eventapi.EventsResponse;
 import fpl_server.services.interfaces.EventsService;
 
 @Controller

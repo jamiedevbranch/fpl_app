@@ -5,12 +5,12 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
-import fpl_server.fpl_server.api.requests.SubscriptionRequest;
+import fpl_server.model.eventapi.SubscriptionRequest;
 import fpl_server.services.interfaces.EventsService;
 import fpl_server.services.interfaces.SubscriptionService;
 
 @Controller
-public class FPLSocketController {
+public class SubscriptionController {
 	
 	@Autowired
 	SubscriptionService subscriptionService;
