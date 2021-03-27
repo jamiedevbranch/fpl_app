@@ -21,7 +21,7 @@ public class SubscriptionController {
 	@MessageMapping("/create")
 	public void saveSubscription(SubscriptionRequest subscriptionRequest) {
 				
-		System.out.println("subbin': " + subscriptionRequest.getTeamId());
+		System.out.println("Subscribing: " + subscriptionRequest.getTeamId());
 
 		subscriptionService.saveCurrentGameweekSubscriptionForTeam(subscriptionRequest.getTeamId());
 		
