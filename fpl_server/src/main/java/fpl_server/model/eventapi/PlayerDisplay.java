@@ -6,11 +6,9 @@ public class PlayerDisplay implements Serializable{
 
 	private Integer playerId;
 	private String name;
-	private String team;
 	
 	public PlayerDisplay(String name, String team, Integer playerId) {
 		this.name = name;
-		this.team = team;
 		this.playerId = playerId;
 	}
 	
@@ -25,12 +23,6 @@ public class PlayerDisplay implements Serializable{
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getTeam() {
-		return team;
-	}
-	public void setTeam(String team) {
-		this.team = team;
 	}
 
 	@Override
