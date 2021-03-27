@@ -118,13 +118,14 @@ public class FplApiDaoImpl implements FplApiDao {
 		
 		GsonBuilder gsonBuilder = new GsonBuilder();
 
+		//Rather than deserialising to a flat list that we have to iterate over to find players by id,
+		//deserialise to a map of playerId to player for indexed id access
 		JsonDeserializer<PlayerData> deserializer = new JsonDeserializer<PlayerData>() {  
 
 			@Override
 			public PlayerData deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
 					throws JsonParseException {
 				JsonObject jsonObject = json.getAsJsonObject();
-				//JsonObject elements = jsonObject.getAsJsonArray("elements")
 				Gson g = new Gson();
 				Map<Integer, Player> players = new HashMap<Integer, Player>();
 				for (JsonElement playerJson : jsonObject.getAsJsonArray("elements")) {
@@ -142,7 +143,6 @@ public class FplApiDaoImpl implements FplApiDao {
 		
 		System.out.println("Loading player data");
 
-		
 		Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8);
 		PlayerData customObject = customGson.fromJson(reader, PlayerData.class); 
 		try {
@@ -199,7 +199,7 @@ public class FplApiDaoImpl implements FplApiDao {
 		        reader.close();
 		        is.close();
 		        
-				System.out.println("Loaded subscription " + teamId);
+		        System.out.println("Loaded subscription " + teamId);
 
 		        Subscription subscription = new Subscription();
 		        subscription.setTeamId(teamId);
