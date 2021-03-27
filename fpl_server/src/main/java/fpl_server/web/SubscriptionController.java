@@ -1,4 +1,4 @@
-package fpl_server.fpl_server.tomcat.web;
+package fpl_server.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;

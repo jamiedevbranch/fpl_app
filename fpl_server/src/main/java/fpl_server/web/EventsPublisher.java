@@ -1,4 +1,4 @@
-package fpl_server.fpl_server.tomcat.web;
+package fpl_server.web;
 
 import java.util.List;
 import java.util.Map;

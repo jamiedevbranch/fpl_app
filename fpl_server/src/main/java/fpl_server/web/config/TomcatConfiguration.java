@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package fpl_server.fpl_server.config;
+package fpl_server.web.config;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
