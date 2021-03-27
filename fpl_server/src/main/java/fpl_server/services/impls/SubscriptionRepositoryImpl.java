@@ -6,22 +6,23 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import fpl_server.daos.interfaces.FplApiDao;
 import fpl_server.objects.Subscription;
-import fpl_server.services.interfaces.SubscriptionService;
+import fpl_server.services.interfaces.SubscriptionRepository;
 
 
-@Service
-public class SubscriptionServiceImpl implements SubscriptionService {
+@Repository
+public class SubscriptionRepositoryImpl implements SubscriptionRepository {
 	
 	private Set<Subscription> subscriptions ;
 
 	private final FplApiDao fplApiDao;
 	
 	@Autowired
-	public SubscriptionServiceImpl(final FplApiDao fplApiDao) {
+	public SubscriptionRepositoryImpl(final FplApiDao fplApiDao) {
 		this.fplApiDao = fplApiDao;
 		subscriptions = new HashSet<Subscription>();
 	}

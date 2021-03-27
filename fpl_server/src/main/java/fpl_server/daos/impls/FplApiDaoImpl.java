@@ -13,7 +13,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
@@ -174,8 +173,9 @@ public class FplApiDaoImpl implements FplApiDao {
 		if(gameweek.isPresent()) {
 			return gameweek.getAsInt();
 		}else {
-			//TODO throw time travel not supported exception??
-			return null;
+			//TODO we're after gameweek 29 now so won't ever hit this case
+			//Should put correct exceptions in place anyway
+			return 1;
 		}
 		
 	}

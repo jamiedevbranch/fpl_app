@@ -21,12 +21,12 @@ import fpl_server.objects.PlayerData;
 import fpl_server.objects.Stats;
 import fpl_server.objects.Subscription;
 import fpl_server.services.interfaces.EventsService;
-import fpl_server.services.interfaces.SubscriptionService;
+import fpl_server.services.interfaces.SubscriptionRepository;
 
 @Service
 public class EventsServiceImpl implements EventsService {
 
-	private final SubscriptionService subscriptionService;
+	private final SubscriptionRepository subscriptionService;
 	
 	private final FplApiDao fplApiDao;
 
@@ -38,7 +38,7 @@ public class EventsServiceImpl implements EventsService {
 	
 	@Autowired
 	public EventsServiceImpl(
-			final SubscriptionService subscriptionService,
+			final SubscriptionRepository subscriptionService,
 			final FplApiDao fplApiDao
 		) {
 		
@@ -64,8 +64,7 @@ public class EventsServiceImpl implements EventsService {
 
 	}
 
-	@Override
-	public List<Event> getNewEventsForSubscribedPlayers() {
+	private List<Event> getNewEventsForSubscribedPlayers() {
 
 		
 		refreshSubscriptions();

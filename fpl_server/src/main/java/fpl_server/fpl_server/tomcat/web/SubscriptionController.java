@@ -7,13 +7,13 @@ import org.springframework.stereotype.Controller;
 
 import fpl_server.model.eventapi.SubscriptionRequest;
 import fpl_server.services.interfaces.EventsService;
-import fpl_server.services.interfaces.SubscriptionService;
+import fpl_server.services.interfaces.SubscriptionRepository;
 
 @Controller
 public class SubscriptionController {
 	
 	@Autowired
-	SubscriptionService subscriptionService;
+	SubscriptionRepository subscriptionService;
 
 	@Autowired
 	EventsService monitorService;
