@@ -7,8 +7,6 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
-
 import fpl_server.daos.interfaces.FplApiDao;
 import fpl_server.objects.Subscription;
 import fpl_server.services.interfaces.SubscriptionRepository;
